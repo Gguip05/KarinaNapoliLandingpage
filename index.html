@@ -1038,6 +1038,104 @@
       outline: 2px solid var(--gold-400);
       outline-offset: 3px;
     }
+
+    /* ══════════════════════════════════════
+       MOBILE — ≤ 767px
+    ══════════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      /* Navbar */
+      .navbar { padding: 0 1rem; }
+      .navbar__logo img { height: 36px !important; }
+
+      /* Hero: foto sobe para cima do texto */
+      .hero { min-height: auto; }
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding: 2rem 1.25rem 5rem;
+        text-align: center;
+      }
+      .hero__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero__sub { text-align: left; max-width: 100%; }
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: .75rem;
+      }
+      .hero__actions .btn-cta,
+      .hero__actions .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero__photo-wrap { order: -1; }
+      .hero__photo-frame {
+        max-width: 260px;
+        aspect-ratio: 3/4;
+        margin: 0 auto;
+      }
+
+      /* Reduz padding das seções */
+      .areas        { padding: 3.5rem 0; }
+      .quote-section{ padding: 3.5rem 0; }
+      .sobre        { padding: 3.5rem 0; }
+      .localizacao  { padding: 3.5rem 0; }
+      .cta-final    { padding: 3.5rem 0; }
+
+      /* Quote */
+      .quote-marks { font-size: 5rem; }
+      .quote-inner { padding: 0 1.25rem; }
+
+      /* Sobre: float card sai do posicionamento absoluto */
+      .sobre__grid { margin-bottom: 0; gap: 2rem; }
+      .sobre__img-wrap { aspect-ratio: 4/3; }
+      .sobre__float-card {
+        position: static;
+        margin-top: .75rem;
+        max-width: 100%;
+        border-radius: 14px;
+        display: flex;
+        gap: .75rem;
+        align-items: center;
+      }
+      .sobre__float-card span { font-size: .95rem; }
+
+      /* CTA Final */
+      .cta-final__inner { padding: 0 1.25rem; }
+      .btn-whatsapp { width: 100%; justify-content: center; }
+
+      /* Footer */
+      .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .4rem;
+      }
+
+      /* Float WA: sobe para não ficar atrás do cookie banner */
+      .float-wa { bottom: 5.5rem; right: 1.25rem; }
+
+      /* Cookie banner: empilha verticalmente */
+      .cookie-banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .75rem;
+        padding: 1rem 1.25rem;
+      }
+      .cookie-banner p { min-width: 0; }
+      .cookie-banner__actions { width: 100%; }
+      .btn-cookie { flex: 1; padding: .65rem 1rem; text-align: center; }
+    }
+
+    /* Telas muito pequenas — ≤ 374px */
+    @media (max-width: 374px) {
+      .hero__title { font-size: 1.8rem; }
+      .hero__photo-frame { max-width: 220px; }
+      .areas__grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
