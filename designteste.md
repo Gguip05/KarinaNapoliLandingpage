@@ -105,3 +105,64 @@ Curva dourada fluida (eco da fênix do logo) atravessando o hero e reaparecendo 
 - Fontes condensadas ou "tech"
 - Stock photo genérica de martelo/balança clichê (a marca usa pessoas reais)
 - Excesso de animação — só a curva assinatura + hovers sutis
+
+# MUDANCAS.md — Site Karina Napóli (rodada de direção visual)
+
+> Origem: feedback da cliente sobre 3 posts do feed (11/06).
+> Resumo do pedido: **suave, leve, sofisticado, discreto — nada carregado.**
+> Referências: posts 1 e 3 (estilo/cores) + fundo branco e frase do post 2.
+
+---
+
+## Cores extraídas dos posts (substituem a paleta atual)
+
+| Token | Hex | Origem | Uso |
+|---|---|---|---|
+| `--slate-600` | `#495463` | fundo posts 1 e 3 | Fundo do hero e seções escuras (substitui o navy fechado `#101F4A`) |
+| `--navy-quote` | `#1D2255` | faixa da frase post 2 | Faixa da seção de citação, footer |
+| `--gold-500` | `#EBC62E` | títulos posts 1 e 3 | Palavras-chave em headlines, acentos |
+| `--gold-400` | `#FACA12` | aspas post 2 | Quote marks, micro-destaques |
+| `--white-soft` | `#FCFCFC` | fundo post 2 | Fundo claro predominante das seções |
+
+**Regra nova de proporção:** branco suave domina (~60%), slate entra em blocos pontuais (~30%), dourado só pontua (~10%). Inverte a lógica anterior (navy dominante) → site fica leve.
+
+---
+
+## PRIORIDADE ALTA
+
+- [ ] **Hero: trocar fundo navy `#101F4A` → slate `#495463`** (tom dos posts 1 e 3 — mais suave que o navy atual)
+- [ ] **Headline do hero no padrão dos posts:** palavra-chave em CAIXA ALTA dourada `#EBC62E` + complemento em branco regular. Ex.: `ADVOCACIA / que educa e protege` (mesma hierarquia de "DIREITO TRABALHISTA / Condutas inadmissíveis...")
+- [ ] **Seções claras: trocar `#F4F6FA` → `#FCFCFC`** com textura sutil de luz radial/sedosa (efeito do fundo do post 2 — gradiente radial branco com leves ondas, CSS puro, bem discreto)
+- [ ] **Nova seção QUOTE (réplica do post 2):** faixa horizontal `#1D2255` cortando seção clara, aspas grandes douradas `#FACA12` nos cantos opostos, com a frase:
+  > **"Não é caro** pagar um advogado. **Caro é** descobrir ***tarde demais*** que precisa de um."
+  > Ênfases: "Não é caro" e "Caro é" em bold; "tarde demais" em bold itálico (igual ao post)
+- [ ] **WhatsApp real: `5547999003325`** — substituir o placeholder `5547999999999` na variável `WHATS`, no link da navbar e no botão flutuante (número confirmado na legenda do post 3: (47) 99900-3325)
+
+## PRIORIDADE MÉDIA
+
+- [ ] **Reduzir peso visual geral:** menos bordas douradas (manter só em 1–2 elementos-chave), sombras mais leves (`box-shadow` com opacidade menor), espaçamento entre seções maior (respiro)
+- [ ] **Cards de áreas:** fundo branco `#FCFCFC`, sem borda dourada por padrão — borda dourada só no hover. Título da área com a palavra-chave dourada (padrão dos posts)
+- [ ] **Cards de atendimento:** card navy → slate `#495463`; manter o claro como está
+- [ ] **Footer: navy `#1D2255`** (tom da faixa, mais elegante que o slate)
+- [ ] **Tipografia das headlines:** manter sans bold, mas reduzir tamanho ~10% e aumentar line-height — leveza
+
+## PRIORIDADE BAIXA
+
+- [ ] Curva dourada assinatura: afinar o traço e reduzir opacidade (~40%) — presente mas discreta
+- [ ] Tag amarela ("Atendimento", "Onde estamos"): manter, porém com `#FACA12` e cantos mais arredondados
+- [ ] Avaliar segunda frase de quote para rodapé de seção: "Quem entende o valor de um bom profissional não discute honorários." (legenda do post 2 — confirmar com a cliente antes)
+
+---
+
+## NÃO MUDAR
+
+- Estrutura de seções (Início, Áreas, Sobre, Atendimento, Quote, Localização, Contato)
+- Cards de atendimento com nome+CPF → WhatsApp (funcionalidade aprovada)
+- Compliance OAB 205/2021 + LGPD
+- Logo branca sobre escuro / navy sobre claro
+
+## VERIFICAÇÃO PÓS-MUDANÇA
+
+- [ ] Contraste do dourado `#EBC62E` sobre slate `#495463` ≥ 4.5:1 em texto pequeno (se falhar, usar dourado só em texto grande/bold — padrão dos posts)
+- [ ] Screenshot mobile + desktop comparado com posts 1 e 3 lado a lado
+- [ ] Sensação geral: "leve e discreto" — se alguma seção parecer carregada, remover elemento decorativo dela
