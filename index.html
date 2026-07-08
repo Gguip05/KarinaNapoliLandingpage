@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karina Napóli Advogados — Joinville/SC</title>
   <meta name="description" content="Advocacia acessível, educativa e protetiva em Joinville/SC. Previdenciário, Trabalhista, Família, Direito da Mulher e mais." />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#5A5A5A" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -12,21 +17,30 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy-900: #101F4A;
-      --navy-700: #1B2F6E;
-      --slate-600: #495463;
-      --navy-quote: #495463;
-      --royal-500: #2843A1;
-      --gold-500: #EBC62E;
-      --gold-400: #FACA12;
-      --gold-300: #FFD23F;
+      /* ─── NOVA PALETA (sem azul) ─── */
+      --bg-main: #5A5A5A;      /* fundo principal — cor única e sólida em toda a página */
+      --card-bg: #FFFFFF;      /* cards de depoimento / versão A */
+      --card-bg-alt: #2A2A2A;  /* cards versão B (área de atuação) */
+      --gray-dark: #2A2A2A;    /* textos e detalhes de contraste */
+      --gray-light: #9A9A9A;   /* textos secundários */
+      --gold: #F2B705;         /* único acento de cor */
+
+      /* Aliases legados repontados p/ nova paleta (mantém classes existentes) */
+      --navy-900: var(--gray-dark);
+      --navy-700: var(--gray-dark);
+      --slate-600: var(--bg-main);
+      --navy-quote: var(--bg-main);
+      --royal-500: var(--gold);
+      --gold-500: var(--gold);
+      --gold-400: var(--gold);
+      --gold-300: var(--gold);
       --white: #FFFFFF;
-      --off-white: #FCFCFC;
+      --off-white: var(--bg-main);
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Poppins', sans-serif;
       --font-body: 'DM Sans', sans-serif;
-      --radius-pill: 32px;
-      --radius-card: 24px;
+      --radius-pill: 4px;      /* elementos retos/angulares */
+      --radius-card: 4px;
     }
 
     html { scroll-behavior: smooth; }
@@ -34,8 +48,8 @@
     body {
       font-family: var(--font-body);
       font-size: 16px;
-      color: var(--navy-900);
-      background: var(--white);
+      color: var(--white);
+      background: var(--bg-main);
       overflow-x: hidden;
     }
 
@@ -58,7 +72,7 @@
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: #495463;
+      background: var(--bg-main);
       z-index: 1000;
       padding: 0 1.5rem;
       height: 68px;
@@ -158,7 +172,7 @@
       .navbar__nav-wrap {
         position: fixed;
         top: 68px; left: 0; right: 0;
-        background: #495463;
+        background: var(--bg-main);
         padding: 1.5rem;
         flex-direction: column;
         gap: 1.25rem;
@@ -177,7 +191,7 @@
     /* ─── HERO ─── */
     .hero {
       min-height: 100dvh;
-      background: linear-gradient(135deg, var(--slate-600) 0%, #3d4856 60%, #2d3847 100%);
+      background: var(--bg-main);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -185,22 +199,11 @@
       padding-top: 68px;
     }
 
-    .hero__bg-dots {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(235,198,46,.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-    }
+    /* pontos/partículas removidos (FASE 2) */
+    .hero__bg-dots { display: none; }
 
-    /* signature gold curve */
-    .hero__curve {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      pointer-events: none;
-    }
+    /* curva ondulada removida (FASE 2 — bordas retas) */
+    .hero__curve { display: none; }
     .curve-divider {
       display: block;
       width: 100%;
@@ -305,8 +308,9 @@
 
     .hero__photo-wrap {
       position: relative;
-      display: flex;
-      justify-content: center;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
     .hero__photo-frame {
       position: relative;
@@ -327,17 +331,19 @@
     .hero__photo-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(44,48,58,.55) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 60%);
     }
+    /* card "invadindo" levemente a borda inferior da foto (FASE 2) */
     .hero__photo-badge {
       position: absolute;
-      bottom: 1.25rem;
-      left: 1.25rem;
-      background: rgba(73,84,99,.9);
-      border: 1px solid var(--gold-400);
-      border-radius: 12px;
+      bottom: -1rem;
+      left: -1rem;
+      background: var(--gray-dark);
+      border: 1px solid var(--gold);
+      border-radius: 4px;
       padding: .6rem 1rem;
-      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      z-index: 3;
     }
     .hero__photo-badge p {
       font-family: var(--font-body);
@@ -355,23 +361,8 @@
       display: block;
     }
 
-    /* floating gold orb decoration */
-    .hero__orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      pointer-events: none;
-    }
-    .hero__orb--1 {
-      width: 300px; height: 300px;
-      background: rgba(242,183,5,.08);
-      top: 10%; right: 5%;
-    }
-    .hero__orb--2 {
-      width: 200px; height: 200px;
-      background: rgba(73,84,99,.2);
-      bottom: 15%; left: -5%;
-    }
+    /* orbs desfocados removidos (FASE 2) */
+    .hero__orb { display: none; }
 
     /* ─── SECTION COMMONS ─── */
     .section-label {
@@ -393,7 +384,7 @@
       font-weight: 800;
       font-size: clamp(1.4rem, 3vw, 2.2rem);
       line-height: 1.2;
-      color: var(--navy-900);
+      color: var(--white);
     }
     .section-title--white { color: var(--white); }
 
@@ -401,7 +392,7 @@
       font-family: var(--font-body);
       font-size: 1rem;
       line-height: 1.7;
-      color: rgba(16,31,74,.65);
+      color: rgba(255,255,255,.8);
       max-width: 560px;
     }
     .section-desc--white { color: rgba(255,255,255,.7); }
@@ -414,8 +405,7 @@
 
     /* ─── ÁREAS DE ATUAÇÃO ─── */
     .areas {
-      background: var(--off-white);
-      background-image: radial-gradient(ellipse at 20% 60%, rgba(235,198,46,.04) 0%, transparent 50%);
+      background: var(--bg-main);
       padding: 6rem 0;
       position: relative;
     }
@@ -434,10 +424,11 @@
       gap: 1.5rem;
     }
 
+    /* Cards de área — versão escolhida: cinza escuro (Versão B) */
     .area-card {
-      background: var(--off-white);
-      border: 1px solid rgba(73,84,99,.1);
-      border-radius: var(--radius-pill);
+      background: var(--card-bg-alt);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 4px;
       padding: 2rem 1.75rem;
       position: relative;
       overflow: hidden;
@@ -448,24 +439,23 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--gold-400), var(--gold-300));
+      background: var(--gold);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .3s ease;
     }
     .area-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(73,84,99,.1);
-      border-color: var(--gold-400);
-      background: var(--white);
+      box-shadow: 0 12px 36px rgba(0,0,0,.4);
+      border-color: var(--gold);
     }
     .area-card:hover::before { transform: scaleX(1); }
 
     .area-card__icon {
       width: 52px;
       height: 52px;
-      background: linear-gradient(135deg, var(--slate-600), #3d4856);
-      border-radius: 14px;
+      background: var(--gold);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -474,7 +464,7 @@
     .area-card__icon svg {
       width: 26px;
       height: 26px;
-      stroke: var(--gold-400);
+      stroke: var(--gray-dark);
       fill: none;
       stroke-width: 1.5;
       stroke-linecap: round;
@@ -485,7 +475,7 @@
       font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1rem;
-      color: var(--navy-900);
+      color: var(--white);
       margin-bottom: .5rem;
       text-transform: uppercase;
       letter-spacing: .03em;
@@ -494,7 +484,7 @@
       font-family: var(--font-body);
       font-size: .9rem;
       line-height: 1.65;
-      color: rgba(16,31,74,.6);
+      color: rgba(255,255,255,.72);
     }
     .area-card__link {
       display: inline-flex;
@@ -506,7 +496,7 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--gold-400);
+      color: var(--gold);
       text-decoration: none;
       transition: gap .2s;
     }
@@ -563,7 +553,7 @@
     /* ─── SOBRE / VOCÊ SABIA ─── */
     .sobre {
       padding: 6rem 0;
-      background: var(--white);
+      background: var(--bg-main);
     }
 
     .sobre__grid {
@@ -590,17 +580,17 @@
       display: flex;
       gap: 1rem;
       align-items: flex-start;
-      background: var(--off-white);
-      border-radius: 16px;
+      background: var(--card-bg);
+      border-radius: 4px;
       padding: 1.1rem 1.25rem;
-      border-left: 3px solid var(--gold-400);
+      border-left: 3px solid var(--gold);
     }
     .sabia-card__icon {
       flex-shrink: 0;
       width: 36px;
       height: 36px;
-      background: var(--slate-600);
-      border-radius: 10px;
+      background: var(--gray-dark);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -617,11 +607,105 @@
       font-family: var(--font-body);
       font-size: .9rem;
       line-height: 1.6;
-      color: rgba(16,31,74,.7);
+      color: rgba(42,42,42,.78);
     }
     .sabia-card__text strong {
-      color: var(--navy-900);
+      color: var(--gray-dark);
       font-weight: 600;
+    }
+
+    /* Painel de texto que substitui a foto do Sobre (FASE 4.1) */
+    .sobre__panel {
+      background: var(--card-bg);
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,.18);
+    }
+    .sobre__panel h3 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gray-dark);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .sobre__panel p {
+      font-family: var(--font-body);
+      font-size: .95rem;
+      line-height: 1.75;
+      color: rgba(42,42,42,.8);
+      margin-bottom: 1rem;
+    }
+    .sobre__panel p:last-child { margin-bottom: 0; }
+    .sobre__panel .sobre__tradicao {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--gray-dark);
+      border-top: 1px solid rgba(42,42,42,.1);
+      padding-top: 1rem;
+    }
+    .sobre__panel .placeholder-note {
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+    }
+
+    /* ─── CITAÇÃO DE DESTAQUE + HISTÓRIA (logo após o hero) ─── */
+    .intro-strip { background: var(--bg-main); padding: 4rem 0 1rem; }
+    .intro-quote {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      padding: 2.25rem 1.5rem;
+    }
+    .intro-quote blockquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+      line-height: 1.4;
+      color: var(--white);
+    }
+    .intro-quote blockquote .q-mark { color: var(--gold); }
+    .intro-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .intro-history {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      max-width: 820px;
+      margin: 2.5rem auto 0;
+      text-align: center;
+    }
+    .intro-history__item strong {
+      display: block;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .intro-history__item span {
+      font-family: var(--font-body);
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      letter-spacing: .04em;
     }
 
     .sobre__visual {
@@ -631,7 +715,7 @@
       border-radius: var(--radius-card);
       overflow: hidden;
       border: 1px solid rgba(242,183,5,.3);
-      box-shadow: 0 20px 60px rgba(16,31,74,.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
       aspect-ratio: 4/5;
     }
     .sobre__img-wrap img {
@@ -642,7 +726,7 @@
     .sobre__img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(44,48,58,.45) 0%, transparent 50%);
+      background: linear-gradient(to top, rgba(0,0,0,.4) 0%, transparent 50%);
       border-radius: var(--radius-card);
     }
     .sobre__float-card {
@@ -685,10 +769,39 @@
     .curve-wrap--navy { background: var(--navy-900); }
     .curve-wrap svg { display: block; width: 100%; }
 
+    /* ─── DEPOIMENTOS (estilo Google Maps) — FASE 4.5 ─── */
+    .depoimentos { background: var(--bg-main); padding: 6rem 0; }
+    .depoimentos__head { text-align: center; margin-bottom: 3rem; }
+    .depoimentos__head .section-desc { margin: 1rem auto 0; }
+    .depoimentos__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .depo-card {
+      background: var(--card-bg);
+      border-radius: 4px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+    .depo-card__head { display: flex; align-items: center; gap: .85rem; margin-bottom: .75rem; }
+    .depo-card__avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gray-dark); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 700; font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+    .depo-card__name { font-family: var(--font-sans); font-weight: 700; font-size: .95rem; color: var(--gray-dark); }
+    .depo-card__when { font-size: .75rem; color: var(--gray-light); }
+    .depo-card__stars { color: var(--gold); letter-spacing: 2px; font-size: .95rem; margin-bottom: .6rem; }
+    .depo-card__text { font-family: var(--font-body); font-size: .9rem; line-height: 1.65; color: rgba(42,42,42,.78); }
+    .depo-card__gmark { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-size: .72rem; color: var(--gray-light); }
+    .depo-card__gmark svg { width: 14px; height: 14px; }
+
     /* ─── LOCALIZAÇÃO ─── */
     .localizacao {
-      background: var(--off-white);
-      background-image: radial-gradient(ellipse at 80% 40%, rgba(235,198,46,.04) 0%, transparent 50%);
+      background: var(--bg-main);
       padding: 6rem 0;
     }
 
@@ -703,10 +816,10 @@
     }
 
     .loc__map {
-      border-radius: var(--radius-card);
+      border-radius: 4px;
       overflow: hidden;
-      border: 1px solid rgba(242,183,5,.3);
-      box-shadow: 0 16px 48px rgba(16,31,74,.1);
+      border: 1px solid var(--gold);
+      box-shadow: 0 16px 48px rgba(0,0,0,.25);
       aspect-ratio: 4/3;
     }
     .loc__map iframe {
@@ -748,20 +861,20 @@
       font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1rem;
-      color: var(--navy-900);
+      color: var(--white);
       margin-bottom: .4rem;
     }
     .loc__address p {
       font-family: var(--font-body);
       font-size: .9rem;
       line-height: 1.7;
-      color: rgba(16,31,74,.65);
+      color: rgba(255,255,255,.75);
     }
 
     .loc__horario {
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid rgba(242,183,5,.2);
+      background: var(--card-bg);
+      border-radius: 4px;
+      border: 1px solid rgba(242,183,5,.35);
       padding: 1.25rem 1.5rem;
     }
     .loc__horario h4 {
@@ -778,28 +891,23 @@
       justify-content: space-between;
       font-family: var(--font-body);
       font-size: .88rem;
-      color: rgba(16,31,74,.7);
+      color: rgba(42,42,42,.75);
       padding: .3rem 0;
-      border-bottom: 1px solid rgba(16,31,74,.06);
+      border-bottom: 1px solid rgba(42,42,42,.1);
     }
     .loc__horario-row:last-child { border-bottom: none; }
-    .loc__horario-row span:last-child { font-weight: 600; color: var(--navy-900); }
+    .loc__horario-row span:last-child { font-weight: 600; color: var(--gray-dark); }
 
     /* ─── CTA FINAL ─── */
     .cta-final {
-      background: linear-gradient(135deg, #495463 0%, #495463 100%);
+      background: var(--bg-main);
       padding: 6rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
+      border-top: 2px solid var(--gold);
     }
-    .cta-final::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(250,202,18,.05) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
+    .cta-final::before { display: none; }
     .cta-final__inner {
       position: relative;
       z-index: 1;
@@ -969,7 +1077,7 @@
     .cookie-banner {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: #495463;
+      background: var(--bg-main);
       border-top: 1px solid rgba(250,202,18,.15);
       padding: 1.25rem 1.5rem;
       z-index: 1100;
@@ -1007,15 +1115,8 @@
     .btn-cookie--deny { background: rgba(255,255,255,.1); color: rgba(255,255,255,.7); }
     .btn-cookie--deny:hover { background: rgba(255,255,255,.15); }
 
-    /* ─── SMOKE TRANSITION ─── */
-    .smoke-transition {
-      margin: 0;
-      padding: 0;
-      pointer-events: none;
-      line-height: 0;
-      font-size: 0;
-    }
-    .smoke-transition div { display: block; }
+    /* ─── SMOKE TRANSITION (removida — fundo agora é cor única) ─── */
+    .smoke-transition { display: none; }
 
     /* ─── SCROLL REVEAL ─── */
     .reveal {
@@ -1212,10 +1313,10 @@
               loading="eager"
             />
             <div class="hero__photo-overlay" aria-hidden="true"></div>
-            <div class="hero__photo-badge">
-              <p>Dra.</p>
-              <span>Karina Napóli</span>
-            </div>
+          </div>
+          <div class="hero__photo-badge">
+            <p>Dra.</p>
+            <span>Karina Napóli</span>
           </div>
         </div>
       </div>
@@ -1231,6 +1332,34 @@
           <path d="M0,60 C360,80 720,40 1080,60 C1260,70 1380,55 1440,50 L1440,80 L0,80 Z"
                 fill="var(--off-white)"/>
         </svg>
+      </div>
+    </section>
+
+    <!-- ══════════ CITAÇÃO DE DESTAQUE + HISTÓRIA (logo após o hero) ══════════ -->
+    <section class="intro-strip" aria-label="Citação e trajetória">
+      <div class="container">
+        <div class="intro-quote reveal">
+          <blockquote>
+            <span class="q-mark" aria-hidden="true">“</span>O direito existe para quem é persistente.<span class="q-mark" aria-hidden="true">”</span>
+            <cite>— Karina Napóli</cite>
+          </blockquote>
+        </div>
+
+        <!-- Bloco de trajetória / tempo de mercado (texto placeholder — ajustar com dados reais) -->
+        <div class="intro-history reveal">
+          <div class="intro-history__item">
+            <strong>+X anos</strong>
+            <span>de atuação em Joinville/SC</span>
+          </div>
+          <div class="intro-history__item">
+            <strong>+X</strong>
+            <span>famílias atendidas</span>
+          </div>
+          <div class="intro-history__item">
+            <strong>OAB/SC</strong>
+            <span>inscrita e atuante</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1251,8 +1380,8 @@
             </div>
             <h3 class="area-card__title">Previdenciário</h3>
             <p class="area-card__desc">Aposentadoria, BPC/LOAS, revisão de benefícios, auxílio-doença e pensão por morte. Seu futuro com segurança jurídica.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Previdenciário">
-              Saiba mais
+            <a href="https://www.instagram.com/p/DZVb6u3xHnd/" class="area-card__link" target="_blank" rel="noopener noreferrer" aria-label="Ver publicação sobre Previdenciário no Instagram">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1263,8 +1392,8 @@
             </div>
             <h3 class="area-card__title">Trabalhista</h3>
             <p class="area-card__desc">Rescisão indevida, horas extras, assédio, FGTS, reconhecimento de vínculo. Defender seus direitos trabalhistas é urgente.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Trabalhista">
-              Saiba mais
+            <a href="https://www.instagram.com/p/DaV6LTcGHap/" class="area-card__link" target="_blank" rel="noopener noreferrer" aria-label="Ver publicação sobre Trabalhista no Instagram">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1275,8 +1404,8 @@
             </div>
             <h3 class="area-card__title">Família</h3>
             <p class="area-card__desc">Divórcio, guarda, alimentos, inventário e partilha. Cuidamos da sua família com sensibilidade e eficiência.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Família">
-              Saiba mais
+            <a href="https://www.instagram.com/p/DZ-22b6hetA/" class="area-card__link" target="_blank" rel="noopener noreferrer" aria-label="Ver publicação sobre Família no Instagram">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1287,8 +1416,8 @@
             </div>
             <h3 class="area-card__title">Direito da Mulher</h3>
             <p class="area-card__desc">Lei Maria da Penha, medidas protetivas, feminicídio, violência doméstica. Porque nenhuma mulher deve sofrer em silêncio.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Direito da Mulher">
-              Saiba mais
+            <a href="#contato" class="area-card__link" aria-label="Fale com o escritório sobre Direito da Mulher">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1299,8 +1428,8 @@
             </div>
             <h3 class="area-card__title">Consumidor / Imobiliário</h3>
             <p class="area-card__desc">Cobranças indevidas, vícios de produto, distrato, despejo, locação. Seus direitos de consumidor e imóvel protegidos.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Consumidor e Imobiliário">
-              Saiba mais
+            <a href="#contato" class="area-card__link" aria-label="Fale com o escritório sobre Consumidor e Imobiliário">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1311,8 +1440,8 @@
             </div>
             <h3 class="area-card__title">Direitos Digitais</h3>
             <p class="area-card__desc">ECA Digital, Lei Felca (Lei 14.674/2023), privacidade online, crimes cibernéticos. Proteção jurídica no mundo digital.</p>
-            <a href="#contato" class="area-card__link" aria-label="Saiba mais sobre Direitos Digitais">
-              Saiba mais
+            <a href="#contato" class="area-card__link" aria-label="Fale com o escritório sobre Direitos Digitais">
+              <span class="area-card__link-label">Fale com o escritório</span>
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </article>
@@ -1321,45 +1450,6 @@
       </div>
     </section>
 
-    <!-- fumaça: áreas → quote -->
-    <div class="smoke-transition" aria-hidden="true">
-      <div style="height:44px;background:linear-gradient(to bottom,#FCFCFC,#F7F7F8)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#F7F7F8,#F2F3F4)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#F2F3F4,#EDEEEF)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#EDEEEF,#E8E9EB)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#E8E9EB,#E3E5E7)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#E3E5E7,#DEE0E3)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#DEE0E3,#D9DBDE)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#D9DBDE,#D4D7DA)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#D4D7DA,#CFD2D6)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#CFD2D6,#CACDD2)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#CACDD2,#C5C9CD)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#C5C9CD,#C0C4C9)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#C0C4C9,#BBBFC5)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#BBBFC5,#B6BBC1)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#B6BBC1,#B1B6BC)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#B1B6BC,#ACB1B8)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#ACB1B8,#A7ADB4)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#A7ADB4,#A3A8B0)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#A3A8B0,#9EA3AB)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#9EA3AB,#999FA7)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#999FA7,#949AA3)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#949AA3,#8F959F)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#8F959F,#8A919A)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#8A919A,#858C96)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#858C96,#808792)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#808792,#7B838E)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#7B838E,#767E89)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#767E89,#717985)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#717985,#6C7581)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#6C7581,#67707D)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#67707D,#626B78)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#626B78,#5D6774)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#5D6774,#586270)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#586270,#535D6C)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#535D6C,#4E5967)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#4E5967,#495463)"></div>
-    </div>
 
     <!-- ══════════ QUOTE ══════════ -->
     <section class="quote-section" aria-label="Frase de autoridade">
@@ -1375,13 +1465,8 @@
         <span class="quote-mark--close" aria-hidden="true">"</span>
       </div>
 
-      <!-- Gold curve divider -->
-      <div aria-hidden="true" style="line-height:0;margin-top:2rem">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;display:block">
-          <path d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="var(--white)"/>
-          <path d="M0,30 C480,60 960,0 1440,30" fill="none" stroke="#FACA12" stroke-width="1" opacity=".35"/>
-        </svg>
-      </div>
+      <!-- Divisor reto dourado (FASE 2) -->
+      <div aria-hidden="true" style="max-width:120px;height:2px;background:var(--gold);margin:2.5rem auto 0"></div>
     </section>
 
     <!-- ══════════ SOBRE / VOCÊ SABIA ══════════ -->
@@ -1424,24 +1509,100 @@
             </div>
           </div>
 
+          <!-- Foto substituída por conteúdo textual expandido (FASE 4.1) -->
           <div class="sobre__visual reveal">
-            <div class="sobre__img-wrap">
-              <img
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
-                alt="Ambiente do escritório de advocacia"
-                width="600"
-                height="750"
-                loading="lazy"
-              />
-              <div class="sobre__img-overlay" aria-hidden="true"></div>
-            </div>
-            <div class="sobre__float-card">
-              <p>Atendimento</p>
-              <span>Humano, direto e acessível</span>
+            <div class="sobre__panel">
+              <h3>Nosso compromisso</h3>
+              <p class="placeholder-note">[ Texto placeholder — será substituído pelo conteúdo definitivo ]</p>
+              <p>
+                Cada caso é conduzido com atenção próxima e linguagem clara: você entende cada etapa
+                do processo, os prazos envolvidos e as possibilidades reais da sua situação — sem
+                promessas vazias e sem juridiquês.
+              </p>
+              <p>
+                Atendimento humano, direto e acessível, presencial em Joinville/SC e também online
+                para quem está em outra cidade. O objetivo é sempre o mesmo: proteger seus direitos
+                e devolver sua tranquilidade.
+              </p>
+              <p class="sobre__tradicao">
+                Acreditamos na tradição do Direito como instrumento de justiça: técnica sólida,
+                ética e respeito à história de cada pessoa que confia seu caso a nós.
+              </p>
             </div>
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ══════════ DEPOIMENTOS ══════════ -->
+    <section class="depoimentos" id="depoimentos" aria-labelledby="depo-title">
+      <div class="container">
+        <div class="depoimentos__head reveal">
+          <span class="section-label">Depoimentos</span>
+          <h2 class="section-title" id="depo-title">O que dizem<br/>nossos clientes.</h2>
+          <p class="section-desc">Avaliações reais de quem confiou no nosso trabalho.</p>
+        </div>
+
+        <div class="depoimentos__grid">
+          <!-- Depoimentos placeholder — substituir por avaliações reais -->
+          <article class="depo-card reveal">
+            <div class="depo-card__head">
+              <div class="depo-card__avatar" aria-hidden="true">M</div>
+              <div>
+                <div class="depo-card__name">Mariana S.</div>
+                <div class="depo-card__when">há 2 semanas</div>
+              </div>
+            </div>
+            <div class="depo-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <p class="depo-card__text">
+              Atendimento excelente do início ao fim. Explicaram tudo com clareza e resolveram
+              meu caso previdenciário com muito profissionalismo. Recomendo de olhos fechados.
+            </p>
+            <span class="depo-card__gmark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#F2B705" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.1-5.5 4.1-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.9 3.1 14.7 2 12 2 6.9 2 2.8 6.1 2.8 11.2S6.9 20.4 12 20.4c5.3 0 8.8-3.7 8.8-9 0-.6-.1-1-.2-1.4H12z"/></svg>
+              Avaliação no Google
+            </span>
+          </article>
+
+          <article class="depo-card reveal">
+            <div class="depo-card__head">
+              <div class="depo-card__avatar" aria-hidden="true">R</div>
+              <div>
+                <div class="depo-card__name">Rafael T.</div>
+                <div class="depo-card__when">há 1 mês</div>
+              </div>
+            </div>
+            <div class="depo-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <p class="depo-card__text">
+              Profissional atenciosa e humana. Me senti amparado durante todo o processo trabalhista
+              e o resultado superou minhas expectativas. Gratidão!
+            </p>
+            <span class="depo-card__gmark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#F2B705" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.1-5.5 4.1-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.9 3.1 14.7 2 12 2 6.9 2 2.8 6.1 2.8 11.2S6.9 20.4 12 20.4c5.3 0 8.8-3.7 8.8-9 0-.6-.1-1-.2-1.4H12z"/></svg>
+              Avaliação no Google
+            </span>
+          </article>
+
+          <article class="depo-card reveal">
+            <div class="depo-card__head">
+              <div class="depo-card__avatar" aria-hidden="true">C</div>
+              <div>
+                <div class="depo-card__name">Camila P.</div>
+                <div class="depo-card__when">há 3 meses</div>
+              </div>
+            </div>
+            <div class="depo-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+            <p class="depo-card__text">
+              Além de excelente advogada, é uma pessoa que realmente se importa. Orientação clara,
+              respostas rápidas e muita competência. Escritório de confiança.
+            </p>
+            <span class="depo-card__gmark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#F2B705" d="M12 10.2v3.9h5.5c-.24 1.4-1.7 4.1-5.5 4.1-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.9 3.1 14.7 2 12 2 6.9 2 2.8 6.1 2.8 11.2S6.9 20.4 12 20.4c5.3 0 8.8-3.7 8.8-9 0-.6-.1-1-.2-1.4H12z"/></svg>
+              Avaliação no Google
+            </span>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1511,45 +1672,6 @@
       </div>
     </section>
 
-    <!-- fumaça: localização → cta -->
-    <div class="smoke-transition" aria-hidden="true">
-      <div style="height:44px;background:linear-gradient(to bottom,#FCFCFC,#F7F7F8)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#F7F7F8,#F2F3F4)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#F2F3F4,#EDEEEF)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#EDEEEF,#E8E9EB)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#E8E9EB,#E3E5E7)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#E3E5E7,#DEE0E3)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#DEE0E3,#D9DBDE)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#D9DBDE,#D4D7DA)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#D4D7DA,#CFD2D6)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#CFD2D6,#CACDD2)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#CACDD2,#C5C9CD)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#C5C9CD,#C0C4C9)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#C0C4C9,#BBBFC5)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#BBBFC5,#B6BBC1)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#B6BBC1,#B1B6BC)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#B1B6BC,#ACB1B8)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#ACB1B8,#A7ADB4)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#A7ADB4,#A3A8B0)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#A3A8B0,#9EA3AB)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#9EA3AB,#999FA7)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#999FA7,#949AA3)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#949AA3,#8F959F)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#8F959F,#8A919A)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#8A919A,#858C96)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#858C96,#808792)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#808792,#7B838E)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#7B838E,#767E89)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#767E89,#717985)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#717985,#6C7581)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#6C7581,#67707D)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#67707D,#626B78)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#626B78,#5D6774)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#5D6774,#586270)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#586270,#535D6C)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#535D6C,#4E5967)"></div>
-      <div style="height:44px;background:linear-gradient(to bottom,#4E5967,#495463)"></div>
-    </div>
 
     <!-- ══════════ CTA FINAL ══════════ -->
     <section class="cta-final" id="contato" aria-labelledby="cta-title">
