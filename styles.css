@@ -1244,3 +1244,25 @@
   .navbar__nav a.active::after,
   .navbar__nav a[aria-current="page"]::after { display: none; }
 }
+
+/* ═══════════════════════════════════════
+   HARDENING RESPONSIVO — evita overflow horizontal no mobile
+   ═══════════════════════════════════════ */
+html { max-width: 100%; overflow-x: hidden; }
+img, svg, iframe { max-width: 100%; }
+.section-title, .hero__title, .hero__sub, .cta-final__title, .cta-final__sub,
+.intro-quote blockquote, .section-desc, .area-card__title, .area-card__desc,
+.depo-card__text, .sobre__panel p, .sabia-card__text {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+@media (max-width: 767px) {
+  /* depoimentos / cards de contato: coluna única em qualquer largura de celular */
+  .depoimentos__grid { grid-template-columns: 1fr; }
+  /* trajetória: gap menor e itens em base flexível para não estourar */
+  .intro-history { gap: 1.25rem 1.75rem; }
+  .intro-history__item { flex: 0 1 auto; }
+  /* cabeçalhos de página internos: menos padding no topo */
+  .intro-strip[style] { padding-top: 6rem !important; }
+}
