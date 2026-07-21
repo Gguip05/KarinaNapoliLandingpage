@@ -94,7 +94,29 @@ Migrar de single-page para páginas separadas:
 6. Estrutura multi-página (maior escopo, por último)
 
 ## Pendências para fechar antes da execução completa
-- [ ] Escolher entre card branco ou cinza escuro nas áreas de atuação (subir as duas opções)
+- [x] Cards de áreas de atuação: **cinza escuro** (decidido — `--card-bg-alt #2A2A2A`, já aplicado nos 6 cards e nos 3 blocos de "Como posso lhe ajudar?")
 - [ ] Escolher entre "Entre em contato" ou "Fale com o escritório"
 - [ ] Mapear os 3 links de Instagram enviados às áreas de atuação corretas (e completar os que faltam)
 - [ ] Confirmar tom exato do cinza de fundo principal (testar variações)
+
+---
+
+## 8. Rascunho em papel enviado pela Karina (21/07) — página inicial
+
+> Origem: foto de um wireframe desenhado à mão pela Karina para a home. Comparado com o que já existe hoje.
+
+Itens já batem com o site atual e não precisam de mudança:
+- Header com logo + menu
+- Citação de destaque logo após o hero (mantida como está: "O direito existe para quem é persistente.")
+- CTA final "Seu próximo passo começa com uma conversa" — texto já é idêntico ao existente
+
+Itens aplicados nesta rodada:
+- [x] Bloco de números: "+X anos" → **"+20 anos"**, conforme rascunho
+- [x] Bloco de números: caption do segundo número ajustada para "em todo o Brasil"
+
+Pendente de confirmação com a Karina antes de publicar:
+- [ ] **O que o "+10 mil" representa** (clientes atendidos? processos? outra métrica?) — está no ar como placeholder no bloco de números
+- [ ] **Seção "Como posso lhe ajudar?"** do rascunho mostra 3 blocos empilhados (tamanhos crescentes), diferente da grade atual de 6 cards de áreas de atuação. Duas abordagens possíveis, a validar com ela:
+  1. Adicionar uma seção nova "Como posso lhe ajudar?" com 3 categorias amplas (ex.: Pessoa Física / Família / Empresa) como um bloco de entrada, mantendo os 6 cards detalhados logo depois
+  2. Consolidar as 6 áreas atuais em apenas 3 blocos maiores, substituindo a grade existente
+  - Nenhuma das duas foi implementada ainda — aguardando decisão dela sobre qual caminho seguir e quais seriam as 3 categorias
