@@ -80,13 +80,13 @@
     .navbar__logo-name {
       font-family: var(--font-serif);
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       color: var(--white);
       letter-spacing: .02em;
     }
     .navbar__logo-sub {
       font-family: var(--font-body);
-      font-size: .65rem;
+      font-size: .7rem;
       font-weight: 600;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -1209,7 +1209,8 @@
 
       /* Navbar */
       .navbar { padding: 0 1rem; }
-      .navbar__logo img { height: 36px !important; }
+      .navbar__logo img { height: 40px !important; }
+      .navbar__logo-name { font-size: 1.2rem; }
 
       /* Hero: foto sobe para cima do texto */
       .hero { min-height: auto; }
