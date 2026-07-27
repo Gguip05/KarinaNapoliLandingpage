@@ -78,34 +78,38 @@
   </header>
 
   <main id="main">
-<section class="hero" aria-label="Apresentação">
+    <!-- ══════════ INTRO — LOGO CENTRALIZADA ══════════ -->
+    <section class="hero-intro" aria-label="Abertura">
+      <h1 class="hero-intro__logo">
+        <img
+          src="assets/images/logo-icone.png"
+          alt=""
+          width="300"
+          height="300"
+          loading="eager"
+          fetchpriority="high"
+          aria-hidden="true"
+        />
+        <span class="hero-intro__name">Napoli</span>
+        <span class="hero-intro__sub">Advogados</span>
+      </h1>
+
+      <a href="#hero-foto" class="hero-intro__scroll" aria-label="Rolar para o conteúdo">
+        <span class="hero-intro__scroll-label">role para conhecer</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </section>
+
+<section class="hero" id="hero-foto" aria-label="Dra. Karina Napoli">
       <div class="hero__bg-dots" aria-hidden="true"></div>
       <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
       <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
 
       <div class="hero__inner">
-        <div class="hero__content">
-          <span class="hero__tag">Joinville/SC · OAB Inscrita</span>
-          <h1 class="hero__title">
-            <em>ADVOCACIA</em><br/>
-            que educa<br/>
-            e protege.
-          </h1>
-          <p class="hero__sub">
-            Advocacia acessível, educativa e humana. Porque <strong style="color:var(--white)">justiça não deve ser privilégio</strong> — deve ser direito de todos.
-          </p>
-          <div class="hero__actions">
-            <a href="https://wa.me/5547999003325?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta." class="btn-cta" target="_blank" rel="noopener noreferrer">
-              Agendar consulta
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <a href="#areas" class="btn-outline">Ver áreas de atuação</a>
-          </div>
-        </div>
-
-        <div class="hero__photo-wrap">
+        <div class="hero__photo-wrap reveal">
           <div class="hero__photo-frame">
             <img
               src="assets/images/karina-napoli-foto.png"
@@ -145,9 +149,7 @@
           </blockquote>
         </div>
 
-        <!-- Bloco de trajetória / tempo de mercado — baseado no rascunho da Karina.
-             TODO(confirmar com a Karina): o que exatamente o "+10 mil" representa
-             (clientes atendidos? processos? outra métrica?) antes de publicar. -->
+        <!-- Bloco de trajetória / tempo de mercado — baseado no rascunho da Karina. -->
         <div class="intro-history reveal">
           <div class="intro-history__item">
             <strong>+20 anos</strong>
@@ -155,11 +157,7 @@
           </div>
           <div class="intro-history__item">
             <strong>+10 mil</strong>
-            <span><!-- TODO: confirmar com a Karina o que este número representa -->em todo o Brasil</span>
-          </div>
-          <div class="intro-history__item">
-            <strong>OAB/SC</strong>
-            <span>inscrita e atuante</span>
+            <span>famílias atendidas em todo o Brasil</span>
           </div>
         </div>
       </div>

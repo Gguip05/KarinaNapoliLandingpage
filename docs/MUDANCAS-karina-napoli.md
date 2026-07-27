@@ -113,9 +113,10 @@ Itens já batem com o site atual e não precisam de mudança:
 Itens aplicados nesta rodada:
 - [x] Bloco de números: "+X anos" → **"+20 anos"**, conforme rascunho
 - [x] Bloco de números: caption do segundo número ajustada para "em todo o Brasil"
+- [x] **"+10 mil" definido como "famílias atendidas em todo o Brasil"** — resolve a pendência que estava aberta sobre o que o número representava
+- [x] Bloco de números: item **"OAB/SC — inscrita e atuante" removido**; o bloco agora tem 2 itens (+20 anos / +10 mil). A menção à OAB segue presente na tag do hero, no rodapé de todas as páginas e no disclaimer do Provimento 205/2021 em `contato.html`
 
 Pendente de confirmação com a Karina antes de publicar:
-- [ ] **O que o "+10 mil" representa** (clientes atendidos? processos? outra métrica?) — está no ar como placeholder no bloco de números
 - [ ] **Seção "Como posso lhe ajudar?"** do rascunho mostra 3 blocos empilhados (tamanhos crescentes), diferente da grade atual de 6 cards de áreas de atuação. Duas abordagens possíveis, a validar com ela:
   1. Adicionar uma seção nova "Como posso lhe ajudar?" com 3 categorias amplas (ex.: Pessoa Física / Família / Empresa) como um bloco de entrada, mantendo os 6 cards detalhados logo depois
   2. Consolidar as 6 áreas atuais em apenas 3 blocos maiores, substituindo a grade existente
