@@ -52,3 +52,28 @@
         ? '0 4px 24px rgba(0,0,0,.3)'
         : 'none';
     }, { passive: true });
+
+    // ── NAVBAR: aparece só depois de descer a intro (somente na home) ──
+    // O rootMargin de -40% encolhe o topo da viewport em 40% da altura da tela,
+    // então a intro deixa de intersectar depois de ~40% de rolagem — é aí que o
+    // menu entra. Sem IntersectionObserver, mostra o menu de imediato.
+    const autoHideHeader = document.querySelector('.header--auto-hide');
+    const introSection = document.querySelector('.hero-intro');
+    if (autoHideHeader) {
+      if (introSection && 'IntersectionObserver' in window) {
+        const headerObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            autoHideHeader.classList.toggle('is-visible', !entry.isIntersecting);
+            // fecha o menu mobile se ele estiver aberto quando a barra some
+            if (entry.isIntersecting && navWrap.classList.contains('open')) {
+              navWrap.classList.remove('open');
+              toggle.setAttribute('aria-expanded', 'false');
+              toggle.setAttribute('aria-label', 'Abrir menu');
+            }
+          });
+        }, { rootMargin: '-40% 0px 0px 0px', threshold: 0 });
+        headerObserver.observe(introSection);
+      } else {
+        autoHideHeader.classList.add('is-visible');
+      }
+    }

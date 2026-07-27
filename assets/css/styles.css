@@ -53,6 +53,33 @@
     .skip-link:focus { top: 0; }
 
     /* ─── NAVBAR ─── */
+    /* Só na home (header--auto-hide): o menu nasce oculto sobre a intro e o
+       script adiciona .is-visible assim que a página começa a descer.
+       Sem JS, o <noscript> do index.html devolve o menu visível. */
+    .header--auto-hide .navbar {
+      transform: translateY(-100%);
+      opacity: 0;
+      /* visibility tira os links da ordem de tabulação enquanto o menu está
+         oculto; o delay deixa a animação de saída terminar antes disso */
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform .45s cubic-bezier(.22,.61,.36,1),
+                  opacity .35s ease,
+                  visibility 0s linear .45s;
+    }
+    .header--auto-hide.is-visible .navbar {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: transform .45s cubic-bezier(.22,.61,.36,1),
+                  opacity .35s ease,
+                  visibility 0s;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .header--auto-hide .navbar { transition: none; }
+    }
+
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
