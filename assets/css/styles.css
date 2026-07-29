@@ -207,9 +207,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      /* ancorado no topo: o padding-top define a altura da logo direto,
+         em vez de centralizar e compensar com margem */
+      justify-content: flex-start;
       gap: 2rem;
-      padding: calc(80px + 2rem) 1.5rem 3rem;
+      padding: clamp(4.5rem, 13vh, 9rem) 1.5rem 3rem;
       text-align: center;
     }
     .hero-intro__logo {
@@ -1295,8 +1297,8 @@
       .navbar__logo-name { font-size: 1.45rem; }
       .navbar__logo-sub { font-size: .68rem; }
 
-      /* Intro: logo centralizada ocupa a primeira tela */
-      .hero-intro { padding: calc(80px + 1.5rem) 1.25rem 2.5rem; }
+      /* Intro: logo ancorada no topo, ocupando a primeira tela */
+      .hero-intro { padding: clamp(3.5rem, 11vh, 7rem) 1.25rem 2.5rem; }
       .hero-intro__scroll { bottom: 1.75rem; }
 
       /* Hero: só a foto, centralizada */
