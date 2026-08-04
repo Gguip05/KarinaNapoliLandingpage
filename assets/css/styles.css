@@ -636,8 +636,23 @@
       align-items: center;
       margin-bottom: 5rem;
     }
-    /* sem painel ao lado: o texto ocupa a largura toda */
+    /* sem painel ao lado: o texto ocupa a largura toda e fica centralizado */
     .sobre__grid--single { grid-template-columns: 1fr; }
+    .sobre__grid--single .sobre__text { text-align: center; }
+    /* especificidade acima de `.sobre__text .section-desc`, que zera as
+       margens laterais no atalho e desfaria a centralização */
+    .sobre__grid--single .sobre__text .section-desc {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* os cards mantêm o ícone à esquerda: centraliza a pilha, não o texto interno */
+    .sobre__grid--single .sabia-cards {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
 
     @media (max-width: 767px) {
       .sobre__grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -690,7 +705,6 @@
       font-weight: 600;
     }
 
-    /* Painel de texto que substitui a foto do Sobre (FASE 4.1) */
     /* ─── CITAÇÃO DE DESTAQUE + HISTÓRIA (logo após o hero) ─── */
     .intro-strip { background: var(--bg-main); padding: 4rem 0 1rem; }
     .intro-quote {
