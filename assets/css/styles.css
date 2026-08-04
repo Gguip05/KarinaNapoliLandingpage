@@ -1318,3 +1318,10 @@ img, svg, iframe { max-width: 100%; }
   /* cabeçalhos de página internos: menos padding no topo */
   .intro-strip[style] { padding-top: 6rem !important; }
 }
+
+/* Telas baixas (janela de desktop pequena, celular deitado): o recuo que
+   desce a logo da intro é proporcional à altura, então nessas alturas ele
+   empurraria o indicador "role para conhecer" para fora da primeira tela. */
+@media (max-height: 640px) {
+  .hero-intro { padding-top: clamp(3rem, 10vh, 6rem); }
+}
