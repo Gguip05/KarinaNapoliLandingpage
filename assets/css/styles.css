@@ -207,11 +207,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* ancorado no topo: o padding-top define a altura da logo direto,
-         em vez de centralizar e compensar com margem */
+      /* o padding-top define a altura da logo direto, em vez de centralizar
+         e compensar com margem — hoje puxado para perto do meio da tela */
       justify-content: flex-start;
       gap: 2rem;
-      padding: clamp(4.5rem, 13vh, 9rem) 1.5rem 3rem;
+      padding: clamp(6rem, 22vh, 16rem) 1.5rem 3rem;
       text-align: center;
     }
     .hero-intro__logo {
@@ -485,6 +485,11 @@
     .areas__head .section-desc {
       margin: 1rem auto 0;
     }
+    /* quando a faixa só traz o selo (sem título/descrição), a margem do selo
+       somaria à do bloco e abriria um vão grande antes dos cards */
+    .areas__head .section-label:only-child {
+      margin-bottom: 0;
+    }
 
     .areas__grid {
       display: grid;
@@ -570,84 +575,6 @@
     }
     .area-card__link:hover { gap: .7rem; }
 
-    /* ─── COMO POSSO LHE AJUDAR? (3 blocos, do rascunho da Karina) ─── */
-    .help-steps {
-      background: var(--bg-main);
-      padding: 2rem 0 6rem;
-      position: relative;
-    }
-
-    .help-steps__grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      max-width: 880px;
-      margin: 0 auto;
-    }
-
-    .help-steps__item {
-      background: var(--card-bg-alt);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 4px;
-      padding: 1.75rem 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform .25s, box-shadow .25s, border-color .25s;
-    }
-    .help-steps__item::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 3px;
-      background: var(--gold);
-    }
-    .help-steps__item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(0,0,0,.35);
-      border-color: var(--gold);
-    }
-
-    /* caixas crescendo de tamanho — eco do rascunho (pequena → média → grande) */
-    .help-steps__item--sm { padding: 1.5rem 1.75rem; margin-left: 0; }
-    .help-steps__item--md { padding: 2rem 2.25rem; margin-left: 2%; margin-right: -2%; }
-    .help-steps__item--lg { padding: 2.5rem 2.75rem; margin-left: 4%; margin-right: -4%; }
-
-    .help-steps__step {
-      display: block;
-      font-family: var(--font-sans);
-      font-weight: 800;
-      font-size: .8rem;
-      letter-spacing: .12em;
-      color: var(--gold);
-      margin-bottom: .5rem;
-    }
-    .help-steps__title {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-      text-transform: uppercase;
-      letter-spacing: .02em;
-      margin-bottom: .5rem;
-    }
-    .help-steps__desc {
-      font-family: var(--font-body);
-      font-size: .9rem;
-      line-height: 1.65;
-      color: rgba(255,255,255,.72);
-      max-width: 620px;
-    }
-
-    @media (max-width: 640px) {
-      .help-steps__item--sm,
-      .help-steps__item--md,
-      .help-steps__item--lg {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 1.5rem 1.5rem;
-      }
-    }
-
     /* ─── QUOTE / AUTORIDADE ─── */
     .quote-section {
       background: var(--navy-quote);
@@ -709,9 +636,11 @@
       align-items: center;
       margin-bottom: 5rem;
     }
+    /* sem painel ao lado: o texto ocupa a largura toda */
+    .sobre__grid--single { grid-template-columns: 1fr; }
+
     @media (max-width: 767px) {
       .sobre__grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .sobre__grid--reverse .sobre__visual { order: -1; }
     }
 
     .sobre__text .section-desc { margin: 1rem 0 1.5rem; }
@@ -762,46 +691,6 @@
     }
 
     /* Painel de texto que substitui a foto do Sobre (FASE 4.1) */
-    .sobre__panel {
-      background: var(--card-bg-alt);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 4px;
-      border-left: 3px solid var(--gold);
-      padding: 2rem 2rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,.28);
-    }
-    .sobre__panel h3 {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-    }
-    .sobre__panel p {
-      font-family: var(--font-body);
-      font-size: .95rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,.78);
-      margin-bottom: 1rem;
-    }
-    .sobre__panel p:last-child { margin-bottom: 0; }
-    .sobre__panel .sobre__tradicao {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--white);
-      border-top: 1px solid rgba(255,255,255,.15);
-      padding-top: 1rem;
-    }
-    .sobre__panel .placeholder-note {
-      font-size: .72rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.5);
-    }
-
     /* ─── CITAÇÃO DE DESTAQUE + HISTÓRIA (logo após o hero) ─── */
     .intro-strip { background: var(--bg-main); padding: 4rem 0 1rem; }
     .intro-quote {
@@ -856,9 +745,6 @@
       letter-spacing: .04em;
     }
 
-    .sobre__visual {
-      position: relative;
-    }
     .sobre__img-wrap {
       border-radius: var(--radius-card);
       overflow: hidden;
@@ -1297,8 +1183,8 @@
       .navbar__logo-name { font-size: 1.45rem; }
       .navbar__logo-sub { font-size: .68rem; }
 
-      /* Intro: logo ancorada no topo, ocupando a primeira tela */
-      .hero-intro { padding: clamp(3.5rem, 11vh, 7rem) 1.25rem 2.5rem; }
+      /* Intro: logo mais próxima do meio, ocupando a primeira tela */
+      .hero-intro { padding: clamp(5rem, 18vh, 11rem) 1.25rem 2.5rem; }
       .hero-intro__scroll { bottom: 1.75rem; }
 
       /* Hero: só a foto, centralizada */
@@ -1404,7 +1290,7 @@ html { max-width: 100%; overflow-x: hidden; }
 img, svg, iframe { max-width: 100%; }
 .section-title, .hero-intro__name, .cta-final__title, .cta-final__sub,
 .intro-quote blockquote, .section-desc, .area-card__title, .area-card__desc,
-.depo-card__text, .sobre__panel p, .sabia-card__text {
+.depo-card__text, .sabia-card__text {
   overflow-wrap: break-word;
   word-break: normal;
 }
