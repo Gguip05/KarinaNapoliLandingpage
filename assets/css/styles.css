@@ -641,10 +641,15 @@
     .sobre__grid--single .sobre__text { text-align: center; }
     /* especificidade acima de `.sobre__text .section-desc`, que zera as
        margens laterais no atalho e desfaria a centralização */
+    /* texto justificado: bordas retas dos dois lados; a hifenização evita
+       os vãos grandes que o justify abre em palavras longas do português */
     .sobre__grid--single .sobre__text .section-desc {
       max-width: 760px;
       margin-left: auto;
       margin-right: auto;
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
     /* os cards mantêm o ícone à esquerda: centraliza a pilha, não o texto interno */
     .sobre__grid--single .sabia-cards {
